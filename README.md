@@ -45,7 +45,7 @@ However, the 'LimitFlags' setting used is '0x3000' rather than '0x2000'. This ap
 
 How do I use AllForOne?
 ------------------------
-AllForOne is straightforward to use. Simply intall it using the package available on NuGet, and then use the Process Extension Method provided to register your child processes as soon as possible after they are created:
+AllForOne is straightforward to use. Simply install it using the package available on NuGet, and then use the Process Extension Method provided to register your child processes as soon as possible after they are created:
 
     var childProcess = new Process { StartInfo = myStartInfo };
     childProcess.Start();
