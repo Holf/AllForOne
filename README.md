@@ -28,7 +28,7 @@ So, you've got code in your Test Fixture Teardown to sort this out, so there's n
     
 2. **Your test run crashes on your Build Server**
  
-    This is potentially a bit more of an issue. Integration test runs crash on Build Servers for all sorts of reasons. Perhaps there is a 32 vs 64 bit mismatch. Maybe there is a permissions problem. Whatever the cause, you really don't want any test related processes hanging around after a build has stopped.
+    Integration tests crash on Build Servers for all sorts of reasons. Perhaps there is a 32 vs 64 bit mismatch. Maybe there is a permissions problem. Whatever the cause, you really don't want any test related processes hanging around after a build has stopped, especially as the problem won't be immediately obvious.
 
    If you're using Continuous Integration your integration tests will be running on your Build Server automatically, hopefully when you check code in several times a day. If something is going wrong with each run, you could end up with tens, if not hundreds of test browser instances running on your Build Server. You'll only know there's a problem the next time you log on and see a screen filled with browsers, or when a co-worker complains that you're using up all the Build Server resources with your crazy Integration Tests.
    
@@ -39,7 +39,7 @@ AllForOne uses Job Object voodoo to ensure a set of processes are managed as a u
 
 This StackOverflow answer inspired much of the code: http://stackoverflow.com/a/4657392/169334.
 
-However, the 'LimitFlags' setting used is '0x3000' rather than '0x2000'. This applies 'JOB_OBJECT_LIMIT_SILENT_BREAKAWAY_OK', as well as 'JOB_OBJECT_LIMIT_KILL_ON_JOB_CLOSE'. Without it, any child processes spawned, such as by instances of Chrome, get assigned and locked to the same Job. Chrome cannot thereafter use it's own Job Management strategies, and therefore crashes.
+However, the 'LimitFlags' setting used is '0x3000' rather than '0x2000'. This applies 'JOB_OBJECT_LIMIT_SILENT_BREAKAWAY_OK', as well as 'JOB_OBJECT_LIMIT_KILL_ON_JOB_CLOSE'. Without it, any further child processes spawned, such as those which Chrome creates itself, get assigned and locked to the same Job. Chrome cannot thereafter use it's own Job Management strategies and therefore crashes.
 
 
   
