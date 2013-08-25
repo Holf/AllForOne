@@ -4,7 +4,8 @@ AllForOne
 
 What does AllForOne do?
 -----------------------
-AllForOne ensures that any processes which are started by your programs will end when you program ends.
+AllForOne ensures that processes which are started by your application end when your application ends.
+
 
 Why is this useful?
 -------------------
@@ -32,14 +33,23 @@ So, you've got code in your Test Fixture Teardown to sort this out, so there's n
 
    If you're using Continuous Integration your integration tests will be running on your Build Server automatically, hopefully when you check code in several times a day. If something is going wrong with each run, you could end up with tens, if not hundreds of test browser instances running on your Build Server. You'll only know there's a problem the next time you log on and see a screen filled with browsers, or when a co-worker complains that you're using up all the Build Server resources with your crazy Integration Tests.
    
+
 How does AllForOne work?
 ------------------------
-
 AllForOne uses Job Object voodoo to ensure a set of processes are managed as a unit. More detail can be found here: http://msdn.microsoft.com/en-us/library/ms684161(v=vs.85).aspx#managing_job_objects.
 
 This StackOverflow answer inspired much of the code: http://stackoverflow.com/a/4657392/169334.
 
 However, the 'LimitFlags' setting used is '0x3000' rather than '0x2000'. This applies 'JOB_OBJECT_LIMIT_SILENT_BREAKAWAY_OK', as well as 'JOB_OBJECT_LIMIT_KILL_ON_JOB_CLOSE'. Without it, any further child processes spawned, such as those which Chrome creates itself, get assigned and locked to the same Job. Chrome cannot thereafter use it's own Job Management strategies and therefore crashes.
 
+
+How do I use AllForOne?
+------------------------
+AllForOne is straightforward to use. Simply intall it using the package available on NuGet, and then use the Process Extension Method provided to register your child processes as soon as possible after they are created:
+
+    var childProcess = new Process { StartInfo = myStartInfo };
+    childProcess.Start();
+
+    childProcess.TieLifecycleToParentProcess();
 
   
