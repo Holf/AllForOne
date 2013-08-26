@@ -19,6 +19,7 @@ namespace Holf.AllForOne.Tests
 
             // Act
             appWithManagedChildProcess.Kill();
+            Thread.Sleep(2000);
 
             // Assert
             var childChromeDriverProcesses = Process.GetProcessesByName(ChildAppName);
