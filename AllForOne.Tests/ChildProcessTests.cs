@@ -9,7 +9,7 @@ namespace Holf.AllForOne.Tests
     [TestFixture]
     public class TestFixture
     {
-        private const string ChildAppName = "chromedriver";
+        private const string ChildAppName = "testChromedriver";
 
         [Test]
         public void Killing_an_App_with_a_Managed_Child_Process_should_also_kill_the_Child_Process()
@@ -22,8 +22,8 @@ namespace Holf.AllForOne.Tests
             Thread.Sleep(2000);
 
             // Assert
-            var childChromeDriverProcesses = Process.GetProcessesByName(ChildAppName);
-            childChromeDriverProcesses.Should().BeEmpty();
+            var childAppProcesses = Process.GetProcessesByName(ChildAppName);
+            childAppProcesses.Should().BeEmpty();
         }
 
         [Test]
@@ -37,16 +37,16 @@ namespace Holf.AllForOne.Tests
             Thread.Sleep(2000);
 
             // Assert
-            var childChromeDriverProcesses = Process.GetProcessesByName(ChildAppName);
-            childChromeDriverProcesses.Should().HaveCount(1);
+            var childAppProcesses = Process.GetProcessesByName(ChildAppName);
+            childAppProcesses.Should().HaveCount(1);
         }
 
         [TearDown]
         public void TearDown()
         {
             // Clean up any hanging child ChromeDriver processes.
-            var chromeDriverProcesses = Process.GetProcessesByName(ChildAppName);
-            chromeDriverProcesses.ToList().ForEach(x => x.Kill());
+            var childAppProcesses = Process.GetProcessesByName(ChildAppName);
+            childAppProcesses.ToList().ForEach(x => x.Kill());
         }
 
         private Process StartApp(string fileName)

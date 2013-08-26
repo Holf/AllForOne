@@ -13,7 +13,7 @@ namespace Holf.AllForOne.Tests.AppWithManagedChildProcess
                 ErrorDialog = false,
                 CreateNoWindow = true,
                 UseShellExecute = true,
-                FileName = "ChromeDriver.exe"
+                FileName = "testChromedriver.exe"
             };
 
             var chromeDriverProcess = new Process { StartInfo = startInfo };
