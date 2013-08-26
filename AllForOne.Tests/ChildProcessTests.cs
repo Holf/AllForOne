@@ -27,7 +27,6 @@ namespace Holf.AllForOne.Tests
         }
 
         [Test]
-        [Ignore]
         public void Killing_an_App_with_an_Unmanaged_Child_Process_should_leave_the_Child_Process_running()
         {
             // Arrange
@@ -35,6 +34,7 @@ namespace Holf.AllForOne.Tests
 
             // Act
             appWithUnmanagedChildProcess.Kill();
+            Thread.Sleep(2000);
 
             // Assert
             var childChromeDriverProcesses = Process.GetProcessesByName(ChildAppName);
