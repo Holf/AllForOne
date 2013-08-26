@@ -59,7 +59,7 @@ Just call `TieLifecycleToParentProcess()` on any child processes you spawn in yo
 
 A note about the project structure
 ----------------------------------
-AllForOne contains the main App project, a Unit Test project, and two Console Applications which the Unit Tests use. Both of these Console Apps spawn a child Chrome Driver instance, but only one uses `TieLifecycleToParentProcess()`.
+AllForOne contains the main App project, a Unit Test project, and two Console Application projects which the Unit Tests use. Both of these Console Apps spawn a child Chrome Driver instance, but only one uses `TieLifecycleToParentProcess()`.
 
 The Unit Test project starts each of these Console Applications and then kills them, testing that child processes are also killed if `TieLifecycleToParentProcess()` has been used.
 
