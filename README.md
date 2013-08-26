@@ -9,11 +9,11 @@ AllForOne ensures that processes which are started by your application end when 
 
 Why is this useful?
 -------------------
-Integration Test Fixtures often use browser automation frameworks, such as Selenium or Watin, to start independent browser processes. Sometimes an intermediary process, which acts as a shim between the browser and the Browser Automation Framework, also needs to be started.
+Browser automation frameworks, such as Selenium or Watin, need an instance of a browser to work with. Sometimes an intermediary process, which acts as a shim between the browser and the browser automation framework, also needs to be started.
 
-For example, to automate browser testing using Google Chrome and Selenium, your Integration Test Fixture Setup code will need to start an instance of Chrome and also an instance of the Selenium Chrome Driver.
+Your Test Fixture Setup code would usually take care of this. For example, to automate browser testing using Google Chrome and Selenium, your Integration Test Fixture Setup code will need to start child processes for both Chrome Browser and Selenium Chrome Driver instances.
 
-Your Test Fixture Teardown will (hopefully!) contain code which kills any processes which were started in your Test Fixture Setup. This is important, as otherwise each time you run your tests you'll start another browser instance, and another, and another...
+Additionally, your Test Fixture Teardown will (hopefully!) contain code which kills any processes which were started in your Test Fixture Setup. This is important, as otherwise each time you run your tests you'll start another browser instance, and another, and another...
 
 So, you've got code in your Test Fixture Teardown to sort this out, so there's no problem, right? True... *but only if your Test Fixture Teardown gets to run*.
 
@@ -21,11 +21,11 @@ So, you've got code in your Test Fixture Teardown to sort this out, so there's n
 
 1. **You abort a test run**
 
-    You're running your integration tests in Visual Studio. You realise something's not right so you click on the `Stop` button in your test runner. Your tests stop, but the Test Fixture Teardown code never had a chance to run. Therefore, your test browser instance is still running.
+    You're running your integration tests in Visual Studio. You realise something's not right so you click on the `Stop` button in your test runner. Your tests stop, but the Test Fixture Teardown code never has a chance to run. Therefore, your test browser instance is still running.
   
     Okay, this is not the end of the world. You can see the test browser is still running and you can kill it. But what a hassle, having to kill the test browser (and possibly something else like Chrome Driver) every time you stop a test run!
     
-    And sometimess you start the test run again, forgetting to kill the test browser and only remembering when your test code complains that a browser is already running. So you stop the tests again, and have to close the original test browser, and the second one that just got started, and maybe two Chrome Driver instances too...
+    And sometimes you start the test run again, forgetting to kill the test browser and only remembering when your test code complains that a browser is already running. So you stop the tests again, and have to close the original test browser, and the second one that just got started, and maybe two Chrome Driver instances too...
     
 2. **Your test run crashes on your Build Server**
  
@@ -52,4 +52,17 @@ AllForOne is straightforward to use. Simply install it using the package availab
 
     childProcess.TieLifecycleToParentProcess();
 
-  
+Now, when the parent process stopped, either because you have killed it or because it crashes, the child process is guaranteed to stop as well.
+
+Just call `TieLifecycleToParentProcess()` on any child processes you spawn in your test code and no longer will you have to worry about hanging processes on your Build Server.
+
+
+A note about the project structure
+----------------------------------
+AllForOne contains the main App project, a Unit Test project, and two Console Applications which the Unit Tests use. Both of these Console Apps spawn a child Chrome Driver instance, but only one uses `TieLifecycleToParentProcess()`.
+
+The Unit Test project starts each of these Console Applications and then kills them, testing that child processes are also killed if `TieLifecycleToParentProcess()` has been used.
+
+The projects make liberal use of Visual Studio linked items. You'll see that there is a 'chromedriver.exe' linked item in each of the test projects; these all point to a 'chromedriver.exe' file in the Chrome Driver NuGet Package folder. However, this file gets copied to the project bin folders as 'testChromedriver.exe', to prevent the Unit Tests interfering with any legitimate Chrome Driver processes that may already be running on your Build Server.
+
+This trick was acheived by manually changing the `<Link>chromedriver.exe</Link>` entry in the project files to `<Link>testChromedriver.exe</Link>`. Unfortunately this is not reflected in the Solution Explorer entry in Visual Studio, which is why I draw attention to this here.
