@@ -40,7 +40,9 @@ AllForOne uses Job Object voodoo to ensure a set of processes are managed as a u
 
 This StackOverflow answer inspired much of the code: http://stackoverflow.com/a/4657392/169334.
 
-However, the 'LimitFlags' setting used is '0x3000' rather than '0x2000'. This applies 'JOB_OBJECT_LIMIT_SILENT_BREAKAWAY_OK', as well as 'JOB_OBJECT_LIMIT_KILL_ON_JOB_CLOSE'. Without it, any further child processes spawned, such as those which Chrome creates itself, get assigned and locked to the same Job. Chrome cannot thereafter use it's own Job Management strategies and therefore crashes.
+However, the 'LimitFlags' setting used is '0x3000' rather than '0x2000'. This applies 'JOB_OBJECT_LIMIT_SILENT_BREAKAWAY_OK', as well as 'JOB_OBJECT_LIMIT_KILL_ON_JOB_CLOSE'. Without it, any further child processes spawned, such as those which Chrome creates itself, get assigned and locked to the same Job. Thereafter, Chrome cannot use it's own Job Management strategies and, therefore, crashes.
+
+The differences are further explained here: http://msdn.microsoft.com/en-us/library/ms684147(VS.85).aspx.
 
 
 How do I use AllForOne?
