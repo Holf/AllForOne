@@ -52,7 +52,7 @@ AllForOne is straightforward to use. Simply install it using the package availab
 
     childProcess.TieLifecycleToParentProcess();
 
-Now, when the parent process stopped, either because you have killed it or because it crashes, the child process is guaranteed to stop as well.
+Now, when the parent process stops, either because you have killed it or because it crashes, the child process is guaranteed to stop as well.
 
 Just call `TieLifecycleToParentProcess()` on any child processes you spawn in your test code and no longer will you have to worry about hanging processes on your Build Server.
 
