@@ -1,10 +1,10 @@
 AllForOne
 =========
-**Put an end to pesky hanging processes on your Build Server.**
+**Say goodbye to pesky hanging processes on your Build Server.**
 
 What does AllForOne do?
 -----------------------
-AllForOne ensures that processes which are started by your application end when your application ends.
+AllForOne ensures that child processes which are started by your application end when your application ends.
 
 
 Why is this useful?

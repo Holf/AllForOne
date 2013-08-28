@@ -4,7 +4,9 @@
     <id>AllForOne</id>
     <version>9.9.9.9</version>
     <authors>Holf</authors>
-    <description>AllForOne ensures any child processes you start from within your application stop when you're application stops.</description>
+    <description>AllForOne ensures that child processes which are started by your application end when your application ends.
+	
+	Say goodbye to pesky hanging processes on your Build Server.</description>
      <language>en-UK</language>
     <projectUrl>https://github.com/Holf/AllForOne</projectUrl>
     <licenseUrl>https://github.com/Holf/AllForOne/blob/master/LICENSE</licenseUrl>
