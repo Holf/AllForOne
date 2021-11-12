@@ -1,21 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AllForOne", "AllForOne\AllForOne.csproj", "{33D7DDB2-BC4C-4F52-A631-661FCCE4ACBA}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AllForOne.Tests", "AllForOne.Tests\AllForOne.Tests.csproj", "{2270F817-3D4A-4814-8419-860027E5CD78}"
-	ProjectSection(ProjectDependencies) = postProject
-		{B0593719-AAC0-4D36-9F5F-A56E4764C280} = {B0593719-AAC0-4D36-9F5F-A56E4764C280}
-		{349FDDB1-6506-4C37-B287-365334CDFFCD} = {349FDDB1-6506-4C37-B287-365334CDFFCD}
-	EndProjectSection
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{38AB52A4-A70F-45AC-91E9-20CD9F67AE58}"
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AllForOne", "AllForOne\AllForOne.csproj", "{33D7DDB2-BC4C-4F52-A631-661FCCE4ACBA}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{3A3A12E1-B276-4F33-AC6D-4E22C5CC5249}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AllForOne.Tests.AppWithManagedChildProcess", "AllForOne.Tests.AppWithManagedChildProcess\AllForOne.Tests.AppWithManagedChildProcess.csproj", "{349FDDB1-6506-4C37-B287-365334CDFFCD}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AllForOne.Tests.AppWithUnmanagedChildProcess", "AllForOne.Tests.AppWithUnmanagedChildProcess\AllForOne.Tests.AppWithUnmanagedChildProcess.csproj", "{B0593719-AAC0-4D36-9F5F-A56E4764C280}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "App", "App", "{94FFC83E-B49C-45F2-8747-A18F6029EC78}"
 EndProject
@@ -34,26 +24,14 @@ Global
 		{33D7DDB2-BC4C-4F52-A631-661FCCE4ACBA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{33D7DDB2-BC4C-4F52-A631-661FCCE4ACBA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{33D7DDB2-BC4C-4F52-A631-661FCCE4ACBA}.Release|Any CPU.Build.0 = Release|Any CPU
-		{2270F817-3D4A-4814-8419-860027E5CD78}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2270F817-3D4A-4814-8419-860027E5CD78}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2270F817-3D4A-4814-8419-860027E5CD78}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2270F817-3D4A-4814-8419-860027E5CD78}.Release|Any CPU.Build.0 = Release|Any CPU
-		{349FDDB1-6506-4C37-B287-365334CDFFCD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{349FDDB1-6506-4C37-B287-365334CDFFCD}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{349FDDB1-6506-4C37-B287-365334CDFFCD}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{349FDDB1-6506-4C37-B287-365334CDFFCD}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B0593719-AAC0-4D36-9F5F-A56E4764C280}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B0593719-AAC0-4D36-9F5F-A56E4764C280}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B0593719-AAC0-4D36-9F5F-A56E4764C280}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B0593719-AAC0-4D36-9F5F-A56E4764C280}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{33D7DDB2-BC4C-4F52-A631-661FCCE4ACBA} = {94FFC83E-B49C-45F2-8747-A18F6029EC78}
-		{2270F817-3D4A-4814-8419-860027E5CD78} = {38AB52A4-A70F-45AC-91E9-20CD9F67AE58}
-		{349FDDB1-6506-4C37-B287-365334CDFFCD} = {38AB52A4-A70F-45AC-91E9-20CD9F67AE58}
-		{B0593719-AAC0-4D36-9F5F-A56E4764C280} = {38AB52A4-A70F-45AC-91E9-20CD9F67AE58}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {DAC683D1-131D-4D39-BBC2-52D3486A1155}
 	EndGlobalSection
 EndGlobal
