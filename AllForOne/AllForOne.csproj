@@ -12,6 +12,7 @@
     <RepositoryUrl>https://github.com/dshk0718/AllForOne</RepositoryUrl>
     <Authors>$(AssemblyName), dshk0718</Authors>
     <PackageProjectUrl>https://github.com/dshk0718/AllForOne</PackageProjectUrl>
+    <PackageLicenseFile>D:\iClassPro\Resources\AllForOne\LICENSE</PackageLicenseFile>
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="..\SharedAssemblyInfo\SharedAssemblyInfo.cs">
