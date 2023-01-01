@@ -17,7 +17,7 @@ Additionally, your Test Fixture Teardown will (hopefully!) contain code which ki
 
 So, you've got code in your Test Fixture Teardown to sort this out, so there's no problem, right? True... *but only if your Test Fixture Teardown gets to run*.
 
-###Why might your Test Fixture Teardown not run?
+### Why might your Test Fixture Teardown not run?
 
 1. **You abort a test run**
 
